@@ -21,6 +21,9 @@ public class CommentController {
     //댓글 작성
     @PostMapping("/post/{id}/comment")
     public String commentwrite(@PathVariable("id") Long boardId ,CommentDto commentDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        if(commentDto.getCocontent()=="") {
+            throw new IllegalArgumentException("댓글 내용을 입력해주세요");
+        }
         Long userId = userDetails.getUser().getId();
         Comment comment= commentService.saveComment(commentDto, userId, boardId);
         System.out.println(comment);
@@ -30,6 +33,9 @@ public class CommentController {
     //댓글 수정 내가 쓴 댓글만 수정가능
     @PutMapping("/post/{id}/comment/{coid}")
     public String update(@PathVariable("coid") Long commentId, CommentDto commentDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        if(commentDto.getCocontent()=="") {
+            throw new IllegalArgumentException("댓글 내용을 입력해주세요");
+        }
         Long userId = userDetails.getUser().getId();
         System.out.println(userId);
         Long commentUserId = commentDto.getUserId();

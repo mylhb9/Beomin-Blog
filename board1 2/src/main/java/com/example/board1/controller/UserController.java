@@ -1,9 +1,11 @@
 package com.example.board1.controller;
 
+import com.example.board1.config.UserDetailsImpl;
 import com.example.board1.dto.SignupRequestDto;
 import com.example.board1.service.KakaoUserService;
 import com.example.board1.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -28,14 +30,19 @@ public class UserController {
 
     // 회원 로그인 페이지
     @GetMapping("/user/login")
-    public String login() {
-
+    public String login(@AuthenticationPrincipal UserDetailsImpl userDetails ) {
+        if(!(userDetails==null)) {
+            throw new IllegalArgumentException("이미 로그인이 되어있습니다");
+        }
         return "sign/login";
     }
 
     // 회원 가입 페이지
     @GetMapping("/user/signup")
-    public String signup() {
+    public String signup(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+        if(!(userDetails==null)) {
+            throw new IllegalArgumentException("이미 로그인이 되어있습니다");
+        }
         return "sign/signup";
     }
 

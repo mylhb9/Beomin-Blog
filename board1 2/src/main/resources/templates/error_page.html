@@ -5,11 +5,17 @@
     <title>오류</title>
     <link rel='stylesheet' href='/webjars/bootstrap/4.5.0/css/bootstrap.min.css'>
     <script>
-        if(!("[[${exception}]]"==null)) {
+        if(("[[${exception}]]"=="")) {
             top.alert("로그인이 필요합니다");
             location.href="/user/login"
         }
+        else if(("[[${exception}]]"=="이미 로그인이 되어있습니다")||("[[${exception}]]"=="댓글 내용을 입력해주세요")){
+
+            top.alert("[[${exception}]]");
+            location.href="/list"
+        }
         else {
+
             top.alert("[[${exception}]]");
             location.href="/user/login"
         }
