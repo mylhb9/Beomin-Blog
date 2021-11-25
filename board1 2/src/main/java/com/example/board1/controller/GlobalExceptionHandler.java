@@ -14,6 +14,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public String except(Exception ex, Model model) {
         String exception = ex.getMessage();
+        System.out.println(exception);
         model.addAttribute("exception", exception);
 
         return "error_page";

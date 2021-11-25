@@ -5,8 +5,15 @@
     <title>오류</title>
     <link rel='stylesheet' href='/webjars/bootstrap/4.5.0/css/bootstrap.min.css'>
     <script>
-        top.alert("[[${exception}]]");
-        location.href="/user/login"
+        if(!("[[${exception}]]"==null)) {
+            top.alert("로그인이 필요합니다");
+            location.href="/user/login"
+        }
+        else {
+            top.alert("[[${exception}]]");
+            location.href="/user/login"
+        }
+
     </script>
 </head>
 <body>

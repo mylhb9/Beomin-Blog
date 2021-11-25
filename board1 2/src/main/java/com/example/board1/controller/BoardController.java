@@ -43,8 +43,13 @@ public class BoardController {
     //상세 페이지 조회
     @GetMapping("/post/{id}")
     public String detail(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable("id") Long id, Model model) {
-        String username = userDetails.getUser().getUsername();
-        model.addAttribute("username",username);
+
+        if (!(userDetails==null)) {
+            String username = userDetails.getUser().getUsername();
+            model.addAttribute("username",username);
+        }
+//
+
         Board board = boardRepository.findById(id).get();
         List<Comment> commentList = commentRepository.findAllByOrderByModifiedAtDesc();
         List<Comment> commentList1 = new ArrayList<>();
