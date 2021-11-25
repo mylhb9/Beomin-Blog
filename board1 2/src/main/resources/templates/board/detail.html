@@ -7,11 +7,12 @@
     <style type="text/css">
         .display-none {
             display: none;
+            /*visibility: hidden;*/
         }
     </style>
     <script>
         const idIsEditingSet = new Set();
-        const onClickCommentEdit = (e) => {
+        function onClickCommentEdit(e){
             const commentId = Number(e.target.dataset.commentId);
             console.log({ commentId })
             const commentIsEditing = idIsEditingSet.has(commentId);
@@ -111,7 +112,6 @@
               method="post">
             <input type="hidden" name="_method" value="delete"/>
             <input type="hidden" name="userId" th:value="${comment.userId}">
-            <button type="submit" class="btn btn-danger" onclick="if(!confirm('정말로 삭제하시겠습니까?')){return false;}">삭제</button>
         </form>
     </div>
 

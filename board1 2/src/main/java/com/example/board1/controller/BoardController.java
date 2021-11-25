@@ -92,7 +92,7 @@ public class BoardController {
         if( boarduserId.equals(userId)) {
             boardService.update(id, boardDto);
         }
-        return "redirect:/list";
+        return "redirect:/post/{id}";
     }
 
 
