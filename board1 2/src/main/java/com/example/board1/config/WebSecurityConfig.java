@@ -42,7 +42,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/**").permitAll()
 
                 .antMatchers("/post/**").permitAll()
+
                 .antMatchers("/list").permitAll()
+
                 .antMatchers("/webjars/bootstrap/4.5.0/css/bootstrap.min.css").permitAll()
 // 그 외 어떤 요청이든 '인증'
                 .anyRequest().authenticated()

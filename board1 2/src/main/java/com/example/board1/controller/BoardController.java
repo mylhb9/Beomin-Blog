@@ -43,7 +43,6 @@ public class BoardController {
     //상세 페이지 조회
     @GetMapping("/post/{id}")
     public String detail(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable("id") Long id, Model model) {
-
         if (!(userDetails==null)) {
             String username = userDetails.getUser().getUsername();
             model.addAttribute("username",username);

@@ -49,6 +49,12 @@ public class UserService {
         if(requestDto.getPassword().indexOf(requestDto.getUsername())!=-1) {
             throw new IllegalArgumentException("비밀번호에 닉네임과 같은 값을 포함할 수 없습니다.");
         }
+        // 입력된 비밀 번호 값이 같지 않으면 회원가입 불가
+        if(!(requestDto.getPassword().equals(requestDto.getPasswordcheck()))) {
+            throw new IllegalArgumentException("비밀번호가 같지 않습니다.");
+        }
+
+
 
 // 패스워드 암호화
         String password = passwordEncoder.encode(requestDto.getPassword());

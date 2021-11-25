@@ -18,6 +18,11 @@
             top.alert("[[${exception}]]");
             location.href="/user/signup"
         }
+        else if(("[[${exception}]]"=="비밀번호가 같지 않습니다.")) {
+            top.alert("[[${exception}]]");
+            location.href = "/user/signup"
+
+        }
         else {
 
             top.alert("[[${exception}]]");

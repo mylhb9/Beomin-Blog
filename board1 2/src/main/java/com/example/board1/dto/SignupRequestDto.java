@@ -22,6 +22,7 @@ public class SignupRequestDto{
     @Pattern(regexp=".{4,}",
             message = "비밀번호는 4자이상의 비밀번호여야 합니다.")
     private String password;
+    private String passwordcheck;
     @NotBlank(message = "이메일은 필수 입력 값입니다.")
     @Email(message = "이메일 형식에 맞지 않습니다.")
     private String email;
