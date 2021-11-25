@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 @Setter
 @Getter // get 함수를 일괄적으로 만들어줍니다.
@@ -19,8 +20,10 @@ public class User {
 
     // nullable: null 허용 여부
 // unique: 중복 허용 여부 (false 일때 중복 허용)
+
     @Column(nullable = false, unique = true)
     private String username;
+
 
     @Column(nullable = false)
     private String password;

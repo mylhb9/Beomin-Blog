@@ -24,27 +24,43 @@
                 box.style.display = "none";
             }
         }
+
+        function onclickPasswordCheck() {
+            let passwordbox = document.getElementById("passwordbox").value;
+            let passwordconfirmbox = document.getElementById("passwordconfirmbox").value;
+            if(!(passwordbox == passwordconfirmbox)) {
+                confirm("비밀번호가 같지 않습니다");
+                return false;
+            }
+        }
+
+
+
     </script>
 </head>
 <body>
 <div id="login-form">
-    <div id="login-title">Sign up Select Shop</div>
+    <div id="login-title">Beomin Blog</div>
 
-    <form action="/user/signup" method="post">
+    <form action="/user/signup" method="post" >
         <div class="login-id-label">Username</div>
         <input type="text" name="username" placeholder="Username" class="login-input-box">
 
         <div class="login-id-label">Password</div>
-        <input type="password" name="password" class="login-input-box">
+        <input id="passwordbox" type="password" name="password" class="login-input-box">
+
+<!--        <div class="login-id-label">Password Confirm</div>-->
+<!--        <input id="passwordconfirmbox" type="password" name="password" class="login-input-box">-->
 
         <div class="login-id-label">E-mail</div>
         <input type="text" name="email" placeholder="E-mail" class="login-input-box">
+
 
         <div>
             <input id="admin-check" type="checkbox" name="admin" onclick="onclickAdmin()" style="margin-top: 40px;">관리자
             <input id="admin-token" type="password" name="adminToken" placeholder="관리자 암호" class="login-input-box" style="display:none">
         </div>
-        <button id="login-id-submit">회원 가입</button>
+        <button id="login-id-submit" >회원 가입</button>
     </form>
 </div>
 </body>

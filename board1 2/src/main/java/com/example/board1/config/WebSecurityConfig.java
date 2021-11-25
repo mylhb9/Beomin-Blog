@@ -25,9 +25,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/h2-console/**");
 
 
-
-
-
     }
 
     @Override
@@ -43,9 +40,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/css/**").permitAll()
 // 회원 관리 처리 API 전부를 login 없이 허용
                 .antMatchers("/user/**").permitAll()
-                .antMatchers("/list").permitAll()
-                .antMatchers("/post/**").permitAll()
 
+                .antMatchers("/post/**").permitAll()
+                .antMatchers("/list").permitAll()
+                .antMatchers("/webjars/bootstrap/4.5.0/css/bootstrap.min.css").permitAll()
 // 그 외 어떤 요청이든 '인증'
                 .anyRequest().authenticated()
                 .and()
