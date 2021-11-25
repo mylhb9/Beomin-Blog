@@ -47,8 +47,6 @@ public class BoardController {
             String username = userDetails.getUser().getUsername();
             model.addAttribute("username",username);
         }
-//
-
         Board board = boardRepository.findById(id).get();
         List<Comment> commentList = commentRepository.findAllByOrderByModifiedAtDesc();
         List<Comment> commentList1 = new ArrayList<>();
