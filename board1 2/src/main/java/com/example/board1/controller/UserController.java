@@ -1,11 +1,9 @@
 package com.example.board1.controller;
 
-import com.example.board1.config.UserDetailsImpl;
 import com.example.board1.dto.SignupRequestDto;
 import com.example.board1.service.KakaoUserService;
 import com.example.board1.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
