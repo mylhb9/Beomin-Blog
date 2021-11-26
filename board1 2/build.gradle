@@ -30,6 +30,7 @@ dependencies {
 	runtimeOnly 'org.webjars:bootstrap:4.5.0'
 	// 스프링 시큐리티
 	implementation 'org.springframework.boot:spring-boot-starter-security'
+	testImplementation 'org.springframework.security:spring-security-test'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 }
 
