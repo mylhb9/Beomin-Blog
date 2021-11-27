@@ -46,6 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/list").permitAll()
 
                 .antMatchers("/webjars/bootstrap/4.5.0/css/bootstrap.min.css").permitAll()
+                .antMatchers("/webjars/jquery/3.5.1/jquery.min.js").permitAll()
 // 그 외 어떤 요청이든 '인증'
                 .anyRequest().authenticated()
                 .and()

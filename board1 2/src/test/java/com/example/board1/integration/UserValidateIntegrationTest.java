@@ -37,10 +37,10 @@ public class UserValidateIntegrationTest {
     @DisplayName("회원 가입 비밀번호 일치1 성공케이스")
     void test1() {
         // given
-        String username = "버민버민a1";
+        String username = "버민버민a3";
         String password = "beominonly";
         String passwordcheck = "beominonly";
-        String email = "beomin@naver.com";
+        String email = "beomi23423n@naver.com";
         boolean admin = false;
 
         SignupRequestDto signupRequestDto = new SignupRequestDto();
