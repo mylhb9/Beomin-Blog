@@ -55,10 +55,10 @@ public class UserController {
     @PostMapping("/user/signup")
     public String registerUser(@Valid SignupRequestDto requestDto, Errors errors, Model model) {
         if (errors.hasErrors()) {
-            Map<String, String> validatorResult = userService.validateHandling(errors);
-            for (String key : validatorResult.keySet()) {
-                model.addAttribute(key,validatorResult.get(key));
-            }
+//            Map<String, String> validatorResult = userService.validateHandling(errors);
+//            for (String key : validatorResult.keySet()) {
+//                model.addAttribute(key,validatorResult.get(key));
+//            }
             return "sign/signup";
         }
 

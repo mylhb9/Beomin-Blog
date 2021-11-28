@@ -1,7 +1,6 @@
 package com.example.board1.integration;
 
 import com.example.board1.domain.User;
-import com.example.board1.domain.UserRoleEnum;
 import com.example.board1.dto.SignupRequestDto;
 
 import com.example.board1.repository.UserRepository;

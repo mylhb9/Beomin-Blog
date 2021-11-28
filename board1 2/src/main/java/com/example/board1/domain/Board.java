@@ -34,6 +34,12 @@ public class Board extends Timestamped{
     @Column(nullable = false)
     private Long userId;
 
+    @Column(columnDefinition = "integer default 0")
+    private int views;
+
+    @Column
+    private int likeCnt;
+
     @CreatedDate
     @Column(updatable = false)
     private LocalDateTime createdDate;
@@ -43,12 +49,21 @@ public class Board extends Timestamped{
 
     public Board (BoardDto boardDto, Long userId) {
         this.userId = userId;
-        this.id = boardDto.getId();
         this.author = boardDto.getAuthor();
         this.title = boardDto.getTitle();
         this.content = boardDto.getContent();
-
+        this.likeCnt = 0;
     }
+
+    public void addViewCount(Board board) {
+        this.views = board.getViews() + 1;
+    }
+
+    public void setLikeCnt(int likeCnt) {
+        this.likeCnt = likeCnt;
+    }
+
+
 
 
     public void update(BoardDto boardDto) {

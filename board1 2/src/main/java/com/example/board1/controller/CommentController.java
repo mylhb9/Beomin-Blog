@@ -4,7 +4,6 @@ package com.example.board1.controller;
 import com.example.board1.config.UserDetailsImpl;
 import com.example.board1.domain.Comment;
 import com.example.board1.dto.CommentDto;
-import com.example.board1.repository.CommentRepository;
 import com.example.board1.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequiredArgsConstructor
 public class CommentController {
-    private final CommentRepository commentRepository;
+
     private final CommentService commentService;
 
     //댓글 작성
@@ -37,9 +36,7 @@ public class CommentController {
             throw new IllegalArgumentException("댓글 내용을 입력해주세요");
         }
         Long userId = userDetails.getUser().getId();
-        System.out.println(userId);
         Long commentUserId = commentDto.getUserId();
-        System.out.println(commentUserId);
         if( commentUserId.equals(userId)) {
             commentService.update(commentId, commentDto);
         }
@@ -53,7 +50,7 @@ public class CommentController {
         Long userId = userDetails.getUser().getId();
         Long commentUserId = commentDto.getUserId();
         if( commentUserId.equals(userId)) {
-            commentRepository.deleteById(commentId);
+            commentService.deleteComment(commentId);
         }
         return "redirect:/post/{id}";
     }

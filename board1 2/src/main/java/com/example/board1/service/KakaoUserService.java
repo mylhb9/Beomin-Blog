@@ -2,7 +2,6 @@ package com.example.board1.service;
 
 import com.example.board1.config.UserDetailsImpl;
 import com.example.board1.domain.User;
-import com.example.board1.domain.UserRoleEnum;
 import com.example.board1.dto.KakaoUserInfoDto;
 import com.example.board1.repository.UserRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -145,9 +144,15 @@ public class KakaoUserService {
                 // email: kakao email
                 String email = kakaoUserInfo.getEmail();
                 // role: 일반 사용자
-                UserRoleEnum role = UserRoleEnum.USER;
 
-                kakaoUser = new User(nickname, encodedPassword, email, role, kakaoId);
+
+                kakaoUser = new User().builder()
+                        .username(nickname)
+                        .password(encodedPassword)
+                        .email(email)
+                        .kakaoId(kakaoId)
+                        .build();
+//                        nickname, encodedPassword, email, kakaoId);
             }
             userRepository.save(kakaoUser);
         }

@@ -47,6 +47,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .antMatchers("/webjars/bootstrap/4.5.0/css/bootstrap.min.css").permitAll()
                 .antMatchers("/webjars/jquery/3.5.1/jquery.min.js").permitAll()
+                .antMatchers("/webjars/bootstrap/4.5.0/js/bootstrap.min.js").permitAll()
+                .antMatchers("https://fonts.gstatic.com").permitAll()
+                .antMatchers("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap").permitAll()
+
+
+
 // 그 외 어떤 요청이든 '인증'
                 .anyRequest().authenticated()
                 .and()

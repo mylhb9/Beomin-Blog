@@ -57,8 +57,6 @@ public class Comment extends Timestamped{
 
     public void update(CommentDto commentDto) {
 
-        System.out.println(commentDto);
-
         this.cocontent = commentDto.getCocontent();
 
         this.coauthor = commentDto.getCoauthor();

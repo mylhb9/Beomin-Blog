@@ -5,9 +5,8 @@ import com.example.board1.config.UserDetailsImpl;
 import com.example.board1.domain.Board;
 import com.example.board1.domain.Comment;
 import com.example.board1.dto.BoardDto;
-import com.example.board1.repository.BoardRepository;
-import com.example.board1.repository.CommentRepository;
 import com.example.board1.service.BoardService;
+import com.example.board1.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -20,14 +19,14 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 public class BoardController {
-    private final BoardRepository boardRepository;
+
     private final BoardService boardService;
-    private final CommentRepository commentRepository;
+    private final CommentService commentService;
 
     // 전체 게시글 조회
     @GetMapping("/list")
     public String list(Model model) {
-        List<Board> boardList = boardRepository.findAllByOrderByModifiedAtDesc();
+        List<Board> boardList = boardService.getAllBoard();
         model.addAttribute("postList", boardList);
         return "board/post-list";
     }
@@ -47,8 +46,8 @@ public class BoardController {
             String username = userDetails.getUser().getUsername();
             model.addAttribute("username",username);
         }
-        Board board = boardRepository.findById(id).get();
-        List<Comment> commentList = commentRepository.findAllByOrderByModifiedAtDesc();
+        Board board = boardService.getBoard(id);
+        List<Comment> commentList = commentService.getAllComment();
         List<Comment> commentList1 = new ArrayList<>();
         for (int i=0; i<commentList.size(); i++) {
             if (commentList.get(i).getBoardId().equals(id)) {
@@ -77,7 +76,7 @@ public class BoardController {
     //게시글 수정페이지 이동
     @GetMapping("/post/edit/{id}")
     public String edit(@PathVariable("id") Long id, Model model) {
-        Board board = boardRepository.findById(id).get();
+        Board board = boardService.getBoard(id);
         model.addAttribute("post",board);
         return "board/edit";
     }
@@ -100,7 +99,7 @@ public class BoardController {
         Long userId = userDetails.getUser().getId();
         Long boarduserId = boardDto.getUserId();
         if( boarduserId.equals(userId)) {
-            boardRepository.deleteById(id);
+            boardService.deleteBoard(id);
         }
 
         return "redirect:/list";
