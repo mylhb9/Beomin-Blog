@@ -1,61 +1,44 @@
 package com.example.board1.domain;
 
-import lombok.Builder;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.Pattern;
 
-@Setter
-@Getter // get 함수를 일괄적으로 만들어줍니다.
-@NoArgsConstructor // 기본 생성자를 만들어줍니다.
-@Entity // DB 테이블 역할을 합니다.
+@NoArgsConstructor
+@Getter
+@Entity
 public class User {
 
-    // ID가 자동으로 생성 및 증가합니다.
+
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;
 
-    // nullable: null 허용 여부
-// unique: 중복 허용 여부 (false 일때 중복 허용)
-
     @Column(nullable = false, unique = true)
-    private String username;
-
+    private String email;
 
     @Column(nullable = false)
     private String password;
 
     @Column(nullable = false, unique = true)
-    private String email;
-
-
-    @Column(unique = true)
-    private Long kakaoId;
-
-
-    @Builder
-    public User(String username, String password, String email, Long kakaoId) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.kakaoId = kakaoId;
-    }
-
-//    public User(String username, String password, String email) {
-//        this.username = username;
-//        this.password = password;
-//        this.email = email;
-//        this.kakaoId = null;
-//    }
+    private String nickname;
 //
-//    public User(String username, String password, String email,  Long kakaoId) {
-//        this.username = username;
-//        this.password = password;
-//        this.email = email;
-//        this.kakaoId = kakaoId;
-//    }
+//    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "BOARD_ID")
+//    private List<Board> boards;
+//
+//    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "COMMENT_ID")
+//    private List<Comment> comments;
+
+
+    public User(String email, String password, String nickname){
+        this.email=email;
+        this.password=password;
+        this.nickname=nickname;
+    }
 }
+
+

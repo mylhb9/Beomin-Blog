@@ -28,7 +28,7 @@ public class CommentController {
         System.out.println(comment);
         return "redirect:/post/{id}";
     }
-
+//ㄴㄴㄴㅇㄹㅁㄴㅇㄹ
     //댓글 수정 내가 쓴 댓글만 수정가능
     @PutMapping("/post/{id}/comment/{coid}")
     public String update(@PathVariable("coid") Long commentId, CommentDto commentDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
